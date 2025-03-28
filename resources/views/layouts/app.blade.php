@@ -24,5 +24,7 @@
                 {{ $slot }}
                 <x-status />
             </main>
+
+            @stack('scripts')
     </body>
 </html>

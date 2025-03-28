@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\View\Components\AppLayout;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use App\View\Components\AppLayout;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // eventueel bindings, niks nodig voor nu
     }
 
     /**

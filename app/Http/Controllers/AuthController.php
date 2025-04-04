@@ -25,7 +25,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
             if (Auth::attempt($credentials)) {
-            return redirect()->route('notes')->with('status', 'Logged in Succesfully');
+            return redirect()->route('articles')->with('status', 'Logged in Succesfully');
         } else {
         return redirect()->route('login')->with('error', 'Incorrect credentials');
         }
@@ -39,7 +39,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             Auth::login($user);
-            return redirect()->route('notes')->with('status', 'Logged in Succesfully');
+            return redirect()->route('articles')->with('status', 'Logged in Succesfully');
         }
     }
 

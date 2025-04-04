@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\NotesController;
+use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -15,12 +15,13 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [NotesController::class, 'index'])->name('notes');
-    Route::get('/create', [NotesController::class, 'create'])->name('create');
-    Route::post('/notes', [NotesController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [NotesController::class, 'edit'])->name('edit');
-    Route::put('/update/{id}', [NotesController::class, 'update'])->name('update');
-    Route::delete('/destroy/{id}', [NotesController::class, 'destroy'])->name('destroy');
+    Route::get('/over-ons', [ArticlesController::class, 'overons'])->name('over-ons');
+    Route::get('/', [ArticlesController::class, 'index'])->name('articles');
+    Route::get('/create', [ArticlesController::class, 'create'])->name('create');
+    Route::post('/articles', [ArticlesController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [ArticlesController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [ArticlesController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [ArticlesController::class, 'destroy'])->name('destroy');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -14,12 +14,12 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                @foreach ($parsedNotes as $note)
+                @foreach ($parsedArticles as $article)
                     <div class="bg-white shadow-md rounded-lg p-4 relative">
-                        <h2 class="text-lg font-bold text-gray-800">{{ $note->title }}</h2>
-                        <div class="text-gray-600 mt-2">{!! $note->content !!}</div>
+                        <h2 class="text-lg font-bold text-gray-800">{{ $article->title }}</h2>
+                        <div class="text-gray-600 mt-2">{!! $article->content !!}</div>
 
-                        <form action="{{ route('destroy', $note->id) }}" method="POST" class="absolute top-2 right-2">
+                        <form action="{{ route('destroy', $article->id) }}" method="POST" class="absolute top-2 right-2">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:text-red-700">
@@ -31,8 +31,8 @@
                         </form>
                     </div>
                 @endforeach
-                @if ($parsedNotes->isEmpty())
-                    <p class="text-gray-700 text-center col-span-full">No notes yet. Start by creating one!</p>
+                @if ($parsedArticles->isEmpty())
+                    <p class="text-gray-700 text-center col-span-full">No article's yet. Start by creating one!</p>
                 @endif
             </div>
         </main>

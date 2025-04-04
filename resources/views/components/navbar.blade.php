@@ -11,14 +11,12 @@
                     <button class="flex items-center focus:outline-none hover:bg-gray-700 px-2 py-1 rounded-lg transition"
                         id="userDropdown">
                         <div class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-gray-400">
-                            @if (Auth::user()->profile_picture)
-                                <img src="{{ Storage::url(Auth::user()->profile_picture) }}" alt="{{ Auth::user()->name }}"
-                                    class="object-cover w-full h-full">
-                            @else
-                                <img src="https://via.placeholder.com/150" alt="Default Profile Picture"
-                                    class="object-cover w-full h-full">
-                            @endif
+                            @php
+                                $profilePicUrl = Auth::user()->profile_picture ? Storage::url(Auth::user()->profile_picture) : asset('default-profile.png');
+                            @endphp
+                            <img src="{{ $profilePicUrl }}" alt="{{ Auth::user()->name }}" class="object-cover w-full h-full">
                         </div>
+                        
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                             stroke="currentColor" class="w-3 h-3 ml-2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -44,8 +42,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('notes') }}" class="block px-4 py-2 hover:bg-gray-100 text-sm transition">
-                                Article
+                            <a href="{{ route('articles') }}" class="block px-4 py-2 hover:bg-gray-100 text-sm transition">
+                                Articles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('over-ons') }}" class="block px-4 py-2 hover:bg-gray-100 text-sm transition">
+                                Over ons
                             </a>
                         </li>
                         <li>

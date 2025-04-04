@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Admin
@@ -19,12 +20,12 @@ class Admin
         //     return $next($request);
         // }
 
-        if (auth()->user()) {
-            if (auth()->user()->role == 'admin') {
+        if (Auth::user()) {
+            if (Auth::user()->role == 'admin') {
                 return $next($request);
             }
-            return redirect()->route('notes');
+            return redirect()->route('articles');
         }
-        return redirect()->route('notes');
+        return redirect()->route('articles');
     }
 }

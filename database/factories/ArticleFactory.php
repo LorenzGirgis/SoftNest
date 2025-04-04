@@ -4,9 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NoteFactory extends Factory
+class ArticleFactory extends Factory
 {
-    protected $model = \App\Models\Note::class;
+    protected $model = \App\Models\Article::class;
 
     /**
      * Define the model's default state.
